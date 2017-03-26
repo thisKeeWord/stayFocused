@@ -1,0 +1,20 @@
+{
+  "name": "Stay Focused",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "This app will encourage productivity",
+  "icons": {
+  },
+  "default_locale": "en",
+  "browser_action": {
+    "default_title": "Stay Focused",
+    "default_popup": "popup.html"
+  },
+  "omnibox": {
+    "keyword": "Stay Focused"
+  },
+  "background": {
+    "scripts": ["scripts.babel/popup.js"]
+  },
+  "permissions": ["ttsEngine", "tts", "tabs"]
+}
