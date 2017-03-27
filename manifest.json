@@ -5,16 +5,25 @@
   "description": "This app will encourage productivity",
   "icons": {
   },
-  "default_locale": "en",
-  "browser_action": {
-    "default_title": "Stay Focused",
-    "default_popup": "popup.html"
-  },
   "omnibox": {
     "keyword": "Stay Focused"
   },
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": ["background.js"],
+      "run_at": "document_end"
+    }
+  ],
   "background": {
-    "scripts": ["scripts.babel/popup.js"]
-  },
-  "permissions": ["ttsEngine", "tts", "tabs"]
+    "scripts": ["background.js"],
+    "persistent": true
+  }
 }
