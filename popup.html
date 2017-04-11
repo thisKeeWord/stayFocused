@@ -15,13 +15,29 @@
   </head>
   <body>
     <h1> Hey there! We're here to encourage productivity by preventing access to a few sites.</h1>
+    <div id="switch">
+      <span>Toggle<span>
+      <!-- <span>on</span>
+      <label class="switch">
+        <input type="checkbox" checked>
+        <div class="slider round"></div>
+      </label>
+      <span>off</span> -->
+      <form id="form">
+        <select name="flip-1" id="flip-1" data-role="slider">
+          <option value="off">Off</option>
+          <option value="on">On</option>
+        </select>
+        <button id="extension-button">Button</button>
+      </form>
+    </div>
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js scripts/popup.js -->
-    <script src="scripts.babel/popup.js"></script>
+    <script src="background.js"></script>
     <!-- endbuild -->
   </body>
 </html>

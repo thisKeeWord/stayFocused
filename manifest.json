@@ -10,7 +10,8 @@
   },
   "permissions": [
     "activeTab",
-    "tabs"
+    "tabs",
+    "storage"
   ],
   "content_scripts": [
     {
@@ -18,12 +19,17 @@
         "http://*/*",
         "https://*/*"
       ],
-      "js": ["background.js"],
+      "js": ["bower_components/jquery/dist/jquery.min.js", "background.js"],
       "run_at": "document_end"
     }
   ],
+  "browser_action": {
+    // "default_title": "Advice Generator",
+    "default_popup": "popup.html"
+  },
   "background": {
-    "scripts": ["background.js"],
+    "pages": "popup.html",
+    "scripts": ["bower_components/jquery/dist/jquery.min.js", "background.js"],
     "persistent": true
   }
 }
