@@ -19,7 +19,7 @@
         "http://*/*",
         "https://*/*"
       ],
-      "js": ["bower_components/jquery/dist/jquery.min.js", "background.js"],
+      "js": ["bower_components/jquery/dist/jquery.min.js", "popup.js"],
       "run_at": "document_end"
     }
   ],

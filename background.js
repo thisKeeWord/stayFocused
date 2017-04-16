@@ -21,32 +21,51 @@ var socialSites = {
 	// window.console.log(items);
 // });
 // if (!obj["currentState"]) {
-if (!window.localStorage.currentState) {
-	// obj["currentState"] = "start";
-	// chrome.storage.local.set(obj, function() {
-		// window.console.log('success');
-	// });
-	window.localStorage["currentState"] = "start";
-}
-if (window.localStorage["currentState"] === "start") {
-	if (document.getElementById("flip-1")) {
-		document.getElementById("flip-1").value = "on";
-	}
-	// while (localStorage["currentState"] === "start") {
+var store = chrome.storage.local.get("currentState", function(res) {
+	console.log('got something', res);
+	return res;
+});
+
+// if (!store) {
+// 	// obj["currentState"] = "start";
+// 	// chrome.storage.local.set(obj, function() {
+// 		// window.console.log('success');
+// 	// });
+// 	chrome.storage.local.set({ "currentState": "start" }, function() {
+// 		console.log('success');
+// 		return store = { "currentState": "start" };
+// 	});
+// }
+
+if (store) {
+	if (store.currentState === "start") {
+		// if (document.getElementById("flip-1")) {
+		// 	document.getElementById("flip-1").value = "on";
+		// }
 		for (var key in socialSites) {
 			if (url.indexOf(key) !== -1) {
 				alert('Stay focused.');
 				window.location = "https://www.google.com";
 			}
 		}
+	}
+	// else if (store.currentState === "stop") {
+	// 	if (document.getElementById("flip-1")) {
+	// 		document.getElementById("flip-1").value = "off";
+	// 	}
 	// }
-}
-if (window.localStorage["currentState"] === "stop") {
-	if (document.getElementById("flip-1")) {
-		document.getElementById("flip-1").value = "off";
+
+
+	if (!store.currentState) {
+		// obj["currentState"] = "start";
+		// chrome.storage.local.set(obj, function() {
+			// window.console.log('success');
+		// });
+		chrome.storage.local.set({ "currentState":"start" }, function() {
+			console.log('success');
+		});
 	}
 }
-
 // window.alert(chrome.storage.local.currentState)
 // window.alert(localStorage);
 //cache button DOM element reference
@@ -59,30 +78,35 @@ if (window.localStorage["currentState"] === "stop") {
 // }
 
 //register button click handler
-if (document.getElementById("extension-button")) {
-	document.getElementById("extension-button").addEventListener("click", function() {
-		window.console.log('asdfadsfsdadfsadfsasdf');
-		// window.alert('asdfasd')
-	  // if (obj["currentState"] === "start") {
-	  if (window.localStorage["currentState"] === "start" && document.getElementById("flip-1").value === "off") {
-	  	// obj["currentState"] = "stop";
-	    // document.getElementById("flip-1").value = "on";
-	    // chrome.storage.local.set(obj, function() {
-	    	// window.console.log("successed");
-	    // });
-	    window.localStorage["currentState"] = "stop";
-	  }
-	  else {
-	  	// obj["currentState"] = "start";
-	    // document.getElementById("flip-1").value = "off";
-	    // chrome.storage.local.set(obj, function() {
-	    	// window.console.log("successed");
-	    // });
-	    window.localStorage["currentState"] = "start";
-	    // window.alert(document.getElementById("#flip-1").val());
-	  }
-	});
-}
+// if (document.getElementById("extension-button")) {
+// 	document.getElementById("extension-button").addEventListener("click", function() {
+// 		window.console.log('yo');
+// 		window.console.log('asdfadsfsdadfsadfsasdf');
+// 		// window.alert('asdfasd')
+// 	  // if (obj["currentState"] === "start") {
+// 	  if (store.currentState === "start") {
+// 	  	// obj["currentState"] = "stop";
+// 	    // document.getElementById("flip-1").value = "on";
+// 	    // chrome.storage.local.set(obj, function() {
+// 	    	// window.console.log("successed");
+// 	    // });
+// 	    chrome.storage.local.set({ "currentState": "stop" }, function() {
+// 	    	console.log('clicked and successful');
+// 	    });
+// 	  }
+// 	  else if (store.currentState === "stop") {
+// 	  	// obj["currentState"] = "start";
+// 	    // document.getElementById("flip-1").value = "off";
+// 	    // chrome.storage.local.set(obj, function() {
+// 	    	// window.console.log("successed");
+// 	    // });
+// 	    chrome.storage.local.set({ "currentState": "start" }, function() {
+// 	    	console.log('clicked and successful');
+// 	    });
+// 	    // window.alert(document.getElementById("#flip-1").val());
+// 	  }
+// 	});
+// }
 
 
 
